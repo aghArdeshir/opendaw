@@ -38,10 +38,19 @@ function setupDragDrop() {
     Array.from(draggedItems).forEach((item) => {
       if (item.kind === "file" && supportedAudioMimeTypes.includes(item.type)) {
         const file = item.getAsFile();
-        console.log(file);
+
+        if (file) {
+          createTrackFromDroppedFile(file);
+        }
       }
     });
   });
 }
 
 setupDragDrop();
+
+function createTrackFromDroppedFile(file: File) {
+  const track = new Track();
+  track.setFile(file);
+  window.opendaw.tracks.push(track);
+}
