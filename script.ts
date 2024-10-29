@@ -1,3 +1,10 @@
+import { Track } from "./Track.ts";
+import "./types.d.ts";
+
+window.opendaw = {
+  tracks: [],
+};
+
 const colorPallete = {
   text: "#fffcf2",
   lightgray: "#ccc5b9",
