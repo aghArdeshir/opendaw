@@ -7,3 +7,34 @@ const colorPallete = {
 };
 
 document.body.style.backgroundColor = colorPallete.bg;
+
+const supportedAudioMimeTypes = ["audio/wav"];
+
+function setupDragDrop() {
+  window.addEventListener("dragenter", (event) => {
+    // TODO: show a dropzone
+  });
+
+  window.addEventListener("dragleave", (event) => {
+    // TODO: hide the dropzone
+  });
+
+  window.addEventListener("dragover", (event) => {
+    event.preventDefault();
+  });
+
+  window.addEventListener("drop", (event) => {
+    event.preventDefault();
+
+    const draggedItems = event.dataTransfer?.items ?? [];
+
+    Array.from(draggedItems).forEach((item) => {
+      if (item.kind === "file" && supportedAudioMimeTypes.includes(item.type)) {
+        const file = item.getAsFile();
+        console.log(file);
+      }
+    });
+  });
+}
+
+setupDragDrop();
