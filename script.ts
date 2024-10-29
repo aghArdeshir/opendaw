@@ -14,6 +14,7 @@ const colorPallete = {
 };
 
 document.body.style.backgroundColor = colorPallete.bg;
+document.body.style.color = colorPallete.text;
 
 const supportedAudioMimeTypes = ["audio/wav"];
 
@@ -63,3 +64,17 @@ function createTrackFromDroppedFile(file: File) {
 }
 
 registerWebCompoenent_OdTrack();
+
+drawGlobalPlayButton();
+
+function drawGlobalPlayButton() {
+  const playButton = document.createElement("button");
+  playButton.textContent = "Play (global)";
+  playButton.addEventListener("click", () => {
+    window.opendaw.tracks.forEach((track) => {
+      track.play();
+    });
+  });
+
+  document.body.appendChild(playButton);
+}
