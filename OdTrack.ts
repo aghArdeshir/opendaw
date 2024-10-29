@@ -21,6 +21,8 @@ class OdTrack extends HTMLElement {
     const wrapper = document.createElement("div");
     wrapper.style.width = "100vw";
 
+    wrapper.textContent = this.track.name;
+
     const playButton = document.createElement("button");
     playButton.textContent = "Play";
 
