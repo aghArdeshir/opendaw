@@ -1,5 +1,5 @@
+import { registerWebCompoenent_OdTrack } from "./OdTrack.ts";
 import { Track } from "./Track.ts";
-import "./types.d.ts";
 
 window.opendaw = {
   tracks: [],
@@ -53,4 +53,13 @@ function createTrackFromDroppedFile(file: File) {
   const track = new Track();
   track.setFile(file);
   window.opendaw.tracks.push(track);
+
+  const odTrack = document.createElement("od-track");
+  odTrack.setAttribute(
+    "data-track-index",
+    String(window.opendaw.tracks.length - 1)
+  );
+  document.body.appendChild(odTrack);
 }
+
+registerWebCompoenent_OdTrack();
